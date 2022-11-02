@@ -11,9 +11,16 @@ How would a world without logarithms look like?
 
 Here we listen to this world exploring the linear piano. 
 
+## Install
+
+1. Clone [this repository](https://github.com/floreencia/pyanito)
+2. pip install -e ~/path/to/repo/pyanito
+
+
+
 ### Uses
 
-* python 2
+* python 3
 
 * matplotlib
 
@@ -21,7 +28,7 @@ Here we listen to this world exploring the linear piano.
 
 * numpy
 
-* scikits.audiolab
+* sounddevice 
 
 * ipywidgets
 
