@@ -1,9 +1,5 @@
 from setuptools import setup
 
-if __name__ == "__main__":
-    setup()
-
-
 setup(
     name='pyanito',
     version='0.1.0',    
@@ -13,9 +9,11 @@ setup(
     author_email='floreencia@gmail.com',
     license='MIT License',
     packages=['pyanito',
-              'pyanito.pyanito'],
-    install_requires=[
-                      'numpy',                     
+              #'pyanito.pyanito'
+              ],
+    install_requires=['scipy',
+                      'numpy',
+                      'sounddevice'                     
                       ],
     classifiers=[
         'Development Status :: 1 - Planning',
