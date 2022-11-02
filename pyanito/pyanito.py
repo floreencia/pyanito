@@ -9,7 +9,7 @@ fs = 44100  # sampling rate Hz
 
 def time_arr(tf, fs):
     """creates a time array with duration tf and sampling rate fs"""
-    return np.linspace(0, tf, fs * tf)
+    return np.linspace(0, tf, int(fs * tf))
 
 
 def _round2int(x):
@@ -24,8 +24,8 @@ round2int = np.vectorize(_round2int)
 def sinewave(freq, time):
     """Creates sine wave"""
     y = np.sin(2 * np.pi * freq * time)
-    #w = signal.tukey(len(y))  # window the signal
-    return y #* w
+    w = signal.tukey(len(y))  # window the signal
+    return y * w
 
 
 def i2dec(n):
@@ -63,7 +63,9 @@ def harmonic(freq, time, n=5, decay=None):
 def play(f, fs):
     """TODO: filter high frequencies or raise error when f > 800 Hz"""
     # if spectrum(f)
-    return sd.play(f, fs)
+    sd.play(f, fs)
+    sd.wait()
+    return None
 
 def playwave(f, tf=1, timber=harmonic):
     """plays sine wave with frequency f and duration tf"""
