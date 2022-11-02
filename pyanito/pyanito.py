@@ -1,13 +1,11 @@
-from __future__ import print_function, division
+#from __future__ import print_function, division
 import numpy as np # manipulate data
 import sounddevice as sd
-#import scikits.audiolab as al # play sounds, only for python 2
-#from scipy import signal # window signal
+from scipy import signal # window signal
 
 fs = 44100  # sampling rate Hz
 
 ### building blocks
-
 
 def time_arr(tf, fs):
     """creates a time array with duration tf and sampling rate fs"""
@@ -26,8 +24,8 @@ round2int = np.vectorize(_round2int)
 def sinewave(freq, time):
     """Creates sine wave"""
     y = np.sin(2 * np.pi * freq * time)
-    w = signal.tukey(len(y))  # window the signal
-    return y * w
+    #w = signal.tukey(len(y))  # window the signal
+    return y #* w
 
 
 def i2dec(n):
@@ -65,13 +63,13 @@ def harmonic(freq, time, n=5, decay=None):
 def play(f, fs):
     """TODO: filter high frequencies or raise error when f > 800 Hz"""
     # if spectrum(f)
-    return al.play(f, fs)
+    return sd.play(f, fs)
 
 def playwave(f, tf=1, timber=harmonic):
     """plays sine wave with frequency f and duration tf"""
     t = time_arr(tf, fs)
     y = timber(f, t)
-    al.play(y, fs=fs)
+    sd.play(y, fs)
 
 #### Other handy sounds to play
 
